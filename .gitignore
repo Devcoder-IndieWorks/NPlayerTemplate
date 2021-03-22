@@ -118,6 +118,7 @@
 # UE4 Asset files
 !*.uasset
 !*.umap
+!*.cfg
 
 # Lib, Dll files
 # !*.lib
