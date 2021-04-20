@@ -64,7 +64,7 @@ UE4 In Camera VFX Template Project가 C++ Project를 지원하지 않아, C++로
 
     * Chromakey Layer 샘플
 
-      ![](https://github.com/Devcoder-Indieworks/NPlayerTemplate/blob/master/ScreenShot/ChromakeyLayer_Sample.png)
+      ![](https://github.com/Devcoder-Indieworks/NPlayerTemplate/blob/master/ScreenShots/ChromakeyLayer_Sample.png)
 
       NPlayer Template에서는 Green색으로 지정된 Plane인 GreenScreenPlane Actor를 추가하여  설정.
 
