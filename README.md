@@ -35,7 +35,7 @@ UE4 In Camera VFX Template Project가 C++ Project를 지원하지 않아, C++로
 
   * NPlayer Template Stage Hierarchy
 
-    ![](D:\DevcoderWorks\WorksVirtualProduct\NPlayerTemplate\ScreenShots\NPlayerTemplateStageHierarchy.png)
+    ![](https://github.com/Devcoder-IndieWorks/NPlayerTemplate/blob/master/ScreenShots/NPlayerTemplateStageHierarchy.png)
 
   * BP_NPlayerStageOrigin Actor: Stage 
 
