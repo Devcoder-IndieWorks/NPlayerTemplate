@@ -27,7 +27,7 @@ UE4 In Camera VFX Template Project가 C++ Project를 지원하지 않아, C++로
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-* ### NPlayer Template Project 설정
+* ### NPlayer Template Project  설정
 
   NPlayer Template는 UE4 In Camera VFX Template Project와 다른점은 NPlayer Template 전용 Pawn 엑터를 구현하여 입력 처리를 Customization 할 수 있다는 점이다.
 
@@ -86,7 +86,7 @@ UE4 In Camera VFX Template Project가 C++ Project를 지원하지 않아, C++로
   
     ![](https://github.com/Devcoder-Indieworks/NPlayerTemplate/blob/master/ScreenShots/BP_NPlayerStageReflectionViewPoint_Detail.png)
   
-    Enable Tick Update Stage Reflection View Point를 Check 하면 Tick 함수에서 카메라 위치를 업데이트하고, Uncheck 하면 NPlayerStagePawn의 Tick 함수에서 카메라 위치를 업데이트 한다.
+    Enable Tick Update Stage Reflection View Point를 check 하면 Tick 함수에서 카메라 위치를 업데이트하고, uncheck 하면 NPlayerStagePawn의 Tick 함수에서 카메라 위치를 업데이트 한다.
   
   * BP_NPlayerWarpMonitor / BP_NPlayerWarpMonitorLevel Actor: LED 화면에 투영할 카메라 Viewport 크기 및 영역을 설정 할 때 사용하는 Static Mesh를 nDisplay Picp Mesh Module에 등록하는 기능을 담당하는 Actor.
   
@@ -113,4 +113,49 @@ UE4 In Camera VFX Template Project가 C++ Project를 지원하지 않아, C++로
     ![](https://github.com/Devcoder-Indieworks/NPlayerTemplate/blob/master/ScreenShots/BP_NPlayerWarpMonitorLevel_BPEvent.png)
   
     (OnLEDWarpMappings 이벤트에서 Picp Mesh Module에 등록)
+  
+    **BP_NPlayerWarpMonitorLevel Actor를 World에 배치 할 때 주의 해야 할 점은 Actor 위치가 Warp Mesh(Group)의 중심을 바라보는 위치에 배치 해 줘야 한다. Warp Mesh(Group)의 중심을 바라 보는 위치가 아니라면, 실행시 Projection 되는 화면 영상이 틀어져 보이게 된다.**
+  
+  * BP_NPlayerStagePawn Actor: NPlayer Template 전용 Pawn Actor.
+  
+    ![](https://github.com/Devcoder-Indieworks/NPlayerTemplate/blob/master/ScreenShots/BP_NPlayerStagePawn_Detail.png)
+  
+    * Inner Frustum Camera: World에 배치된 InnerFrustum Cine Camera Actor를 등록한다.
+    * LEDWarp Monitor: World에 배치된 BP_NPlayerWarpMonitor Actor를 등록한다.
+    * Stage Reflection View Point: World에 배치된 BP_NPlayerStageReflectionViewPoint Actor를 등록한다.
+
+------------------------------------------------------------------------------------------------------------------------------------------------
+
+* ### NPlayerStagePawn 사용
+
+  * NPlayerStagePawn / InnerFrustum 조작
+
+    UE4에서 기본 정의된 Key Bind로 이동이 가능하고, 마우스를 통해 Yaw, Pitch 회전이 가능하다. UE4에서 기본 정의된 Key Bind 대신 새로 Key Bind를 정의해서 사용 할 수도 있다.
+
+    기본 설정 Key
+
+    * W / S: 전후 이동
+    * A / D: 좌우 이동
+    * E / C: 위아래 이동
+    * Mouse: Yaw, Pitch 회전
+
+    NPlayerStagePawn의 ControlInput 항목에서 Add Default Movement Bindings를 체크 해재 하면 기본 Key Bind를 사용하지 않고, 새로 Key Bind를 정의 할 수 있다.
+
+  * NPlayerStagePawn 입력 기능여부 설정
+
+    실행 중 NPlayerStagePawn 이동과 회전 입력이 되지 않도록 할 수 있는데,  O Key를 누르면 된다. 다시 이동과 회전 입력이 되고자 한다면, 다시 O Key를 누르면 된다.
+
+    ![](https://github.com/Devcoder-Indieworks/NPlayerTemplate/blob/master/ScreenShots/NPlayerStagePawn_Input.png)
+
+  * NPlayerStagePawn과 InnerFrustum 입력 전환
+
+    기본 값으로 설정된 Key로 Pawn 뿐만 아니라, Inner Frustum 카메라 이동과 회전도 제어 가능하다. Inner Frustum 카메라 이동과 회전 입력을 사용 할 수 있도록 하기 위해서는 P Key를 누르면 된다. 다시 Pawn의 이동과 회전 입력을 하고자 한다면, 다시 P Key를 누르면 된다.
+
+    ![](https://github.com/Devcoder-Indieworks/NPlayerTemplate/blob/master/ScreenShots/InnerFrustumCamera_Input.png)
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+* ### NPlayer Template 실행
+
+  nDisplay 기능이 정상 동작하기 위해서는 nDisplay 기능을 활성화 시켜줘야 한다. nDisplay 기능 활성화는 Project Settings의 nDisplay에서 Enable 항목을 check 해 주면 된다.
 
