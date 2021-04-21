@@ -92,15 +92,25 @@ UE4 In Camera VFX Template Project가 C++ Project를 지원하지 않아, C++로
   
     BP_NPlayerWarpMonitor는 Static Mesh Component를 Actor 안에 직접 추가하여 BeginPlay 이벤트에서 nDisplay Picp Mesh Module에 등록하는 방식으로 동작한다.
   
-    ![](https://github.com/Devcoder-Indieworks/NPlayerTemplate/blob/master/ScreenShots/BP_NPlayerWarpMonitor.png "Actor에 StatckMeshComponent를 추가한 모습")
+    ![](https://github.com/Devcoder-Indieworks/NPlayerTemplate/blob/master/ScreenShots/BP_NPlayerWarpMonitor.png)
   
-    ![](https://github.com/Devcoder-Indieworks/NPlayerTemplate/blob/master/ScreenShots/BP_NPlayerWarpMonitor_BeginPlayEvent.png "OnSetupLEDWarpWhenBeginPlay 이벤트에서 Picp Mesh Module에 등록")
+    (Actor에 StatckMeshComponent를 추가한 모습)
+  
+    ![](https://github.com/Devcoder-Indieworks/NPlayerTemplate/blob/master/ScreenShots/BP_NPlayerWarpMonitor_BeginPlayEvent.png)
+  
+    (OnSetupLEDWarpWhenBeginPlay 이벤트에서 Picp Mesh Module에 등록)
   
     BP_NPlayerWarpMonitorLevel은 World에 배치된 StaticMesh Actor들을 참조하여 실행시 nDisplay Picp Mesh Module에 등록하는 방식으로 동작한다.
   
-    ![](https://github.com/Devcoder-Indieworks/NPlayerTemplate/blob/master/ScreenShots/BP_NPlayerWarpMonitorLevel.png "World에 배치된 StaticMesh Actor")
+    ![](https://github.com/Devcoder-Indieworks/NPlayerTemplate/blob/master/ScreenShots/BP_NPlayerWarpMonitorLevel.png)
   
-    ![](https://github.com/Devcoder-Indieworks/NPlayerTemplate/blob/master/ScreenShots/BP_NPlayerWarpMonitorLevel_Detail.png "LEDWarp Mappings 목록에 World에 배치된 StaticMesh Actor들을 등록")
+    (World에 배치된 StaticMesh Actor)
   
-    ![](https://github.com/Devcoder-Indieworks/NPlayerTemplate/blob/master/ScreenShots/BP_NPlayerWarpMonitorLevel_BPEvent.png "OnLEDWarpMappings 이벤트에서 Picp Mesh Module에 등록")
+    ![](https://github.com/Devcoder-Indieworks/NPlayerTemplate/blob/master/ScreenShots/BP_NPlayerWarpMonitorLevel_Detail.png)
+  
+    (LEDWarp Mappings 목록에 World에 배치된 StaticMesh Actor들을 등록)
+  
+    ![](https://github.com/Devcoder-Indieworks/NPlayerTemplate/blob/master/ScreenShots/BP_NPlayerWarpMonitorLevel_BPEvent.png)
+  
+    (OnLEDWarpMappings 이벤트에서 Picp Mesh Module에 등록)
 
