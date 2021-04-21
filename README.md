@@ -74,3 +74,33 @@ UE4 In Camera VFX Template Project가 C++ Project를 지원하지 않아, C++로
 
     Show projection screens 항목을 check 해 주고, 옵션으로 Projection screen material를 설정 해 줄 수도 있다.
 
+  * InnerFrustum (Cine Camera Actor): 실제 촬영하는 카메라의 Tracking 정보를 입력 받아 내부용 Frustum 투영 효과를 만드는 Camera Actor(실제 In Camera VFX 기능을 한다.)
+
+    이 InnerFrustum 아래에 Chromakey 할 영역을 만들어 주는 GreenScreenPlane인 StaticMesh Actor를 놓아 둔다.
+
+    ![](https://github.com/Devcoder-Indieworks/NPlayerTemplate/blob/master/ScreenShots/InnerFrustum_Hierarchy.png)
+
+  * BP_NPlayerStageReflectionViewPoint Actor: LED 화면에 투영하기 위한 카메라 위치를 설정하는 Actor.
+  
+    NPlayerTemplate에서는 NPlayerStagePawn에서 LED 화면 투영 카메라 위치를 업데이트 할 수 있도록 하기 위한 기능이 추가 되었다.
+  
+    ![](https://github.com/Devcoder-Indieworks/NPlayerTemplate/blob/master/ScreenShots/BP_NPlayerStageReflectionViewPoint_Detail.png)
+  
+    Enable Tick Update Stage Reflection View Point를 Check 하면 Tick 함수에서 카메라 위치를 업데이트하고, Uncheck 하면 NPlayerStagePawn의 Tick 함수에서 카메라 위치를 업데이트 한다.
+  
+  * BP_NPlayerWarpMonitor / BP_NPlayerWarpMonitorLevel Actor: LED 화면에 투영할 카메라 Viewport 크기 및 영역을 설정 할 때 사용하는 Static Mesh를 nDisplay Picp Mesh Module에 등록하는 기능을 담당하는 Actor.
+  
+    BP_NPlayerWarpMonitor는 Static Mesh Component를 Actor 안에 직접 추가하여 BeginPlay 이벤트에서 nDisplay Picp Mesh Module에 등록하는 방식으로 동작한다.
+  
+    ![](https://github.com/Devcoder-Indieworks/NPlayerTemplate/blob/master/ScreenShots/BP_NPlayerWarpMonitor.png "Actor에 StatckMeshComponent를 추가한 모습")
+  
+    ![](https://github.com/Devcoder-Indieworks/NPlayerTemplate/blob/master/ScreenShots/BP_NPlayerWarpMonitor_BeginPlayEvent.png "OnSetupLEDWarpWhenBeginPlay 이벤트에서 Picp Mesh Module에 등록")
+  
+    BP_NPlayerWarpMonitorLevel은 World에 배치된 StaticMesh Actor들을 참조하여 실행시 nDisplay Picp Mesh Module에 등록하는 방식으로 동작한다.
+  
+    ![](https://github.com/Devcoder-Indieworks/NPlayerTemplate/blob/master/ScreenShots/BP_NPlayerWarpMonitorLevel.png "World에 배치된 StaticMesh Actor")
+  
+    ![](https://github.com/Devcoder-Indieworks/NPlayerTemplate/blob/master/ScreenShots/BP_NPlayerWarpMonitorLevel_Detail.png "LEDWarp Mappings 목록에 World에 배치된 StaticMesh Actor들을 등록")
+  
+    ![](https://github.com/Devcoder-Indieworks/NPlayerTemplate/blob/master/ScreenShots/BP_NPlayerWarpMonitorLevel_BPEvent.png "OnLEDWarpMappings 이벤트에서 Picp Mesh Module에 등록")
+
