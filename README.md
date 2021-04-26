@@ -128,7 +128,7 @@ UE4 In Camera VFX Template Project가 C++ Project를 지원하지 않아, C++로
 
 * ### NPlayerStagePawn 사용
 
-  * NPlayerStagePawn / InnerFrustum 조작
+  * #### NPlayerStagePawn / InnerFrustum 조작
 
     UE4에서 기본 정의된 Key Bind로 이동이 가능하고, 마우스를 통해 Yaw, Pitch 회전이 가능하다. UE4에서 기본 정의된 Key Bind 대신 새로 Key Bind를 정의해서 사용 할 수도 있다.
 
@@ -141,13 +141,13 @@ UE4 In Camera VFX Template Project가 C++ Project를 지원하지 않아, C++로
 
     NPlayerStagePawn의 ControlInput 항목에서 Add Default Movement Bindings를 체크 해재 하면 기본 Key Bind를 사용하지 않고, 새로 Key Bind를 정의 할 수 있다.
 
-  * NPlayerStagePawn 입력 기능여부 설정
+  * #### NPlayerStagePawn 입력 기능여부 설정
 
     실행 중 NPlayerStagePawn 이동과 회전 입력이 되지 않도록 할 수 있는데,  O Key를 누르면 된다. 다시 이동과 회전 입력이 되고자 한다면, 다시 O Key를 누르면 된다.
 
     ![](https://github.com/Devcoder-Indieworks/NPlayerTemplate/blob/master/ScreenShots/NPlayerStagePawn_Input.png)
 
-  * NPlayerStagePawn과 InnerFrustum 입력 전환
+  * #### NPlayerStagePawn과 InnerFrustum 입력 전환
 
     기본 값으로 설정된 Key로 Pawn 뿐만 아니라, Inner Frustum 카메라 이동과 회전도 제어 가능하다. Inner Frustum 카메라 이동과 회전 입력을 사용 할 수 있도록 하기 위해서는 P Key를 누르면 된다. 다시 Pawn의 이동과 회전 입력을 하고자 한다면, 다시 P Key를 누르면 된다.
 
@@ -158,4 +158,33 @@ UE4 In Camera VFX Template Project가 C++ Project를 지원하지 않아, C++로
 * ### NPlayer Template 실행
 
   nDisplay 기능이 정상 동작하기 위해서는 nDisplay 기능을 활성화 시켜줘야 한다. nDisplay 기능 활성화는 Project Settings의 nDisplay에서 Enable 항목을 check 해 주면 된다.
+  
+  ![](https://github.com/Devcoder-Indieworks/NPlayerTemplate/blob/master/ScreenShots/nDisplay_Enable.png)
+  
+  * 각 PC(nDisplay Cluster PC)에 동일한 어셋과 Project DLL 파일, Unreal Engine 4 버젼을 설치 한다. **설치시 유의 할 사항은 Unreal Engine 4 설치 경로와 Project 설치 경로가 모든 PC에서 동일해야 된다.**
+  
+  * Unreal Engine 4의 Binaries 폴더 아래 DotNET 폴더에서 nDisplayListener.exe를 각 PC에서 실행 해 둔다.
+  
+  * Main Cluster 역할을 하는 PC에서는 Unreal Engine 4의 Binaries 폴더 아래 DotNET 폴더에서 nDisplayLauncher.exe를 실행 한다.
+  
+  * nDisplayLauncher에서 실행 할 Project를 등록 해 줘야 한다. Applications 항목에 보면 Add Project In Editor -game 버튼을 눌려 UE4Editor.exe 파일을 선택한다. UE4Editor.exe 파일은 Project에서 사용하는 엔진 버젼의 것을 선택 해야 한다.
+  
+    ![](https://github.com/Devcoder-Indieworks/NPlayerTemplate/blob/master/ScreenShots/AddProjectInEditor.png)
+  
+    ![](https://github.com/Devcoder-Indieworks/NPlayerTemplate/blob/master/ScreenShots/Select_UE4Editor.png)
+  
+  * NPlayerTemplate.uproject 파일을 선택 한다.
+  
+    ![](https://github.com/Devcoder-Indieworks/NPlayerTemplate/blob/master/ScreenShots/Select_NPlayerTemplate.png)
+  
+  * nDisplay Config File을 선택하기 위해 NPlayerTemplate의 Content폴더 아래 nDisplayConfigs 폴더에서 NPlayerTemplate_Multiviewports.cfg 파일을 선택 한다.
+  * nDisplay Launcher에서 추가한 Project를 선택하고, 추가한 nDisplay Config File을 선택한 후 Run 버튼을 누르면 Main PC와 각 Cluster PC에서 nDisplay Config File에 설정된 정보에 따라 NPlayerTemplate Project가 실행 된다.
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+* ### UE4 In Camera 최적화 옵션
+
+  
+
+
 
