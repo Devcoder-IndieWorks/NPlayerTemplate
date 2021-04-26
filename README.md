@@ -184,7 +184,49 @@ UE4 In Camera VFX Template Project가 C++ Project를 지원하지 않아, C++로
 
 * ### UE4 In Camera 최적화 옵션
 
-  
+  * #### NVIDIA NVLink를 사용하여 Multi GPU 지원을 통한 렌더링 성능 개선 방법
+
+    배경 LED(외부용 Frustum)에 렌더링 할 것과 내부용 Frustum에 렌더링 할 것을 분리하여 GPU 하나는 배경 LED로 출력될 것을 렌더링하고, 또 다른 GPU 하나는 내부용 Frustum으로 출력될 것을 렌더링하는 방식으로 성능을 개선 할 수 있다.
+
+    이 기능을 사용하기 위해서는 NVIDIA NVLink 카드와 최소 GPU 2개가 필요하다.
+
+    하드웨어 사양이 갖춰졌다면, nDisplay Config 파일에서 Viewport 항목에 다음 2가지 옵션 내용을 설정하면 된다.
+
+    **gpu_node="번호"**
+
+    **allow_gpu_transfer="true/false"**
+
+    **예:**
+
+    **[viewport] id="screen_left" ... projection="proj_wrap" gpu_node="0" allow_gpu_transfer="false"**
+
+    **[viewport] id="rtt_inner" ... projection="camera" gpu_node="1" allow_gpu_transfer="true"**
+
+    gpu_node 옵션 값에 2개 GPU를 사용하므로 0/1값을 설정 할 수 있다. 보통 배경 LED 렌더링을 0으로 내부용 Frustum 렌더링은 1로 설정 한다.
+
+    allow_gpu_transfer 옵션은 이렇게 2개로 분리하여 렌더링된 결과를 최종적으로 LED로 추력을 해야 하는데, 어느쪽 GPU를 통해 보낼지를 선택하는 옵션이다.
+
+    보통 0번 GPU가 출력을 담당하는 GPU이므로 출력을 담당하는 GPU가 설정된 viewport에서는 allow_gpu_transfer 값을 false로 설정하고, 그 외 GPU가 설정된 viewport에서는 값을 true로 설정한다.
+
+    **추가적으로 Multi GPU를 활용하기 위해서는 Default RHI는 D3D12(DX12)로 설정하고, nDisplay Launcher에서 시작시 custom command line에 인수로 MaxGPUCount=2를 추가해서 실행해야 한다.**
+
+    
+
+  * #### 단일 GPU에서 렌더링 성능 개선 방법
+
+    하나의 GPU에서 배경 LED와 내부용 Frustum으로 출력될 내용 전부를 렌더링하면 많은 부하가 발생하게 된다. 그래서 하나의 GPU를 사용하더라도 렌더링 성능을 개선하기 위해 특정 viewport의 해상도를 낮추어 픽셀 프로세싱 코스트를 줄여 성능을 개선 하는 방법을 이용해 볼 수 있다.
+
+    **viewport 해상도를 낮추는 방법은 BP_IncameraStageSettings Actor에서 Viewport Resolution 항목에 Viewport Resolution Settings에 해상도를 낮출 Viewport 항목을 추가하고, nDisplay Config 파일에서 설정한 viewport id 값을 입력해 주고, 변경할 해상도 비율을 설정 해 준다.**
+
+    해상도 비율값은 1.0 ~ 0.0으로 1.0이면 원래 해상도이고, 1.0보다 작은 값이면 렌더링 되는 해상도는 작아지게 된다.
+
+    **예시 그림**
+
+    ![](https://github.com/Devcoder-Indieworks/NPlayerTemplate/blob/master/ScreenShots/Single_GPU_Settings.png)
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
 
 
 
