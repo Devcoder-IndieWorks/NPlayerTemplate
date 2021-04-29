@@ -223,6 +223,14 @@ UE4 In Camera VFX Template Project가 C++ Project를 지원하지 않아, C++로
     **예시 그림**
 
     ![](https://github.com/Devcoder-Indieworks/NPlayerTemplate/blob/master/ScreenShots/Single_GPU_Settings.png)
+  
+  * #### DLSS를 활용한 성능 개선 방법
+  
+    NVIDIA DLSS(Deep Learning Super Sampling) 은 real-time ray tracing 렌더링 속도를 높이기 위해 해상도가 낮은 프레임 버퍼에 Ray Tracing으로 렌더링하고 RTX GPU의 전용 Tensor 코어 프로세서를 이용하여 원래 해상도로 Upscale 하는 인공지능 기반 샘플링 기능으로 DLSS를 활용하여 nDisplay Rendering 성능 개선에 이용해 볼 수 있다.
+    
+    참고문서: [nDisplay Rendering Pipeline에 DLSS 축하기][DLSSLink]
+    
+    [DLSSLink]: https://github_com/Devcoder-Indieworks/NPlayerTemplate/blob/master/nDisplay_Rendering_Pipeline_NVIDIA_DLSS.md
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
