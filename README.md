@@ -230,9 +230,63 @@ UE4 In Camera VFX Template Project가 C++ Project를 지원하지 않아, C++로
     
     참고문서: [nDisplay Rendering Pipeline에 DLSS 축하기][DLSSLink]
     
-    [DLSSLink]: https://github_com/Devcoder-Indieworks/NPlayerTemplate/blob/master/nDisplay_Rendering_Pipeline_NVIDIA_DLSS.md
+    [DLSSLink]: https://github.com/Devcoder-Indieworks/NPlayerTemplate/blob/master/nDisplay_Rendering_Pipeline_NVIDIA_DLSS.md
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+* ### UE4 In Camera VFX에서 Multi-User Editing 설정
+
+  ![](https://github.com/Devcoder-Indieworks/NPlayerTemplate/blob/master/ScreenShots/Plugin_Multi_User_Editing.png)
+
+  * Default Server URL: Multi-User Server가 실행 중인 PC의 이름을 설정
+
+  * Default Session Name: 하나의 Multi-User Server에 여러 개의 Session을 만들 수 있는데, 그 중 하나의 Session을 설정하여 자동으로 접속 가능한 Session 이름을 설정.
+
+  * Display Name: Multi-User Editing시 화면에 보여지는 사용자 이름 설정.
+
+  * Avatar Color: Multi-User Editing시 화면에 표시 되는 유저 아바타 모델의 색상을 지정.
+
+  * Auto Connect: UE4가 실행되면 Default Server URL과 Default Session Name을 참고하여 바로 Multi-User Server에 접속 되도록 하는 기능을 활성화 하는 설정.
+
+  * #### Main Cluster PC에서 Multi-User Editing Server 실행
+
+    Toolbar의 참가 항목에서 Multi-User Server 실행 항목을 눌러 서버를 띄운다.
+
+    ![](https://github.com/Devcoder-Indieworks/NPlayerTemplate/blob/master/ScreenShots/Execute_Multi_User_Server.png)
+
+  * #### Main Cluster PC에서 Session Browser를 통해 Session 생성
+
+    Toolbar의 참가 항목에서 Session Browser 항목을 눌러 Session Browser 창을 띄우면, 자동으로 실행된 서버에 접속 된다.
+
+    ![](https://github.com/Devcoder-Indieworks/NPlayerTemplate/blob/master/ScreenShots/Session_Browser.png)
+
+    (Multi-User Session Browser 실행)
+
+    ![](https://github.com/Devcoder-Indieworks/NPlayerTemplate/blob/master/ScreenShots/Create_Session_Browser.png)
+
+    (Multi-User Session Browser)
+
+    Session 생성을 통해 새로운 Session을 생성한다. 참고로 Cluster PC의 Multi-User Editing 설정에서 Default Server URL과 Default Session Name이 설정되어져 있다면, Default Session Name에 설정된 Session 이름과 같은 이름으로 Session을 생성해야 함. 그렇게 Session을 생성하면 Cluster PC에서 NPlayerTemplate Project 실행시 Multi-User Editing의 서버와 세션에 자동으로 접속하게 된다.
+
+  * #### Main Cluster PC의 UE4 Editor에서 Session에 참가
+
+    Session을 생성하면 자동으로 생성된 Session에 참가하게 된다.
+
+    ![](https://github.com/Devcoder-Indieworks/NPlayerTemplate/blob/master/ScreenShots/Join_Session.png)
+
+    (Session에 참가된 모습)
+
+  * #### Cluster PC들이 Multi-User Editing에 참가
+
+    Cluster PC들에서 실행된 NPlayerTemplate Project들이 Multi-User Editing에 참가 하려면, Multi-User Editing 설정 항목 중에서 Default Server URL과 Default Session Name이 설정 되어져 있어야 하며, Auto Connect 항목이 check 되어져 있어야 한다.
+
+    그런 후 **nDisplayLauncher에서 -messaging 명령어를 추가**하여 실행 시키면 자동으로 Multi-User Editing에 참여하게 된다.
+
+    ![](https://github.com/Devcoder-Indieworks/NPlayerTemplate/blob/master/ScreenShots/Launch_Multi_User_Editing.png)
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
 
 
 
