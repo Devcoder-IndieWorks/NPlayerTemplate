@@ -41,9 +41,9 @@ NVIDIA DLSS 사용하기 위한 설정을 해도 nDisplay 실행시 DLSS 기능�
 
 윗쪽 빨간색박스의 내용인 **GetTemporalUpscalerInterface()가 nullptr 값을 반환**하여 아랫쪽 빨간색박스의 내용인 **UpscalerToUse != DefaultTemporalUpscaler가 false**가 되어 **Third Party Upscaler**가 등록되지 않아 DLSS 기능이 작동하지 않는것이다.
 
-**View.Family->GetTemporalUpscalerInterface()**에 유효한 인스턴스가 존재해야 하는데, ViewFamily에 TemporalUpscaler를 설정 하는 코드가 nDisplay 관련 코드에 존재 하지 않는다.
+View.Family->GetTemporalUpscalerInterface()에 유효한 인스턴스가 존재해야 하는데, ViewFamily에 TemporalUpscaler를 설정 하는 코드가 nDisplay 관련 코드에 존재 하지 않는다.
 
-그래서 nDisplay 실행시 사용되는 **UDisplayClusterViewportClient::Draw()**함수 내 다음 구현 내용들을 추가항여 ViewFamily에 DLSS Upscaler 인스턴스가 설정 되도록 해 준다.
+그래서 nDisplay 실행시 사용되는 **UDisplayClusterViewportClient::Draw()함수** 내 다음 구현 내용들을 추가항여 ViewFamily에 DLSS Upscaler 인스턴스가 설정 되도록 해 준다.
 
 ![](https://github.com/Devcoder-IndieWorks/NPlayerTemplate/blob/master/ScreenShots/modify_dlss_ue4_1.png)
 
@@ -51,5 +51,5 @@ NVIDIA DLSS 사용하기 위한 설정을 해도 nDisplay 실행시 DLSS 기능�
 
 ![](https://github.com/Devcoder-IndieWorks/NPlayerTemplate/blob/master/ScreenShots/modify_dlss_ue4_2.png)
 
-Line 497 ~ 498 부분에 **GCustomStaticScreenPercentage->SetupMainGameViewFamily()**를 호출하여 Game View Family를 통해 DLSS Upscaler 인스턴스가 사용 될 수 있도록 해 준다.
+Line 497 ~ 498 부분에 **GCustomStaticScreenPercentage->SetupMainGameViewFamily()를 호출**하여 Game View Family를 통해 DLSS Upscaler 인스턴스가 사용 될 수 있도록 해 준다.
 
