@@ -53,3 +53,19 @@ View.Family->GetTemporalUpscalerInterface()에 유효한 인스턴스가 존재�
 
 Line 497 ~ 498 부분에 **GCustomStaticScreenPercentage->SetupMainGameViewFamily()를 호출**하여 Game View Family를 통해 DLSS Upscaler 인스턴스가 사용 될 수 있도록 해 준다.
 
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+### Multi GPU 사용시 NVIDIA DLSS 기능을 이용하기 위한 UE4 Engine Code 수정하기
+
+NVIDIA Quadro P8000 Dual GPU에서 nDisplay Multi GPU(MGPU)를 활성화하고 DLSS 사용시 두 번째 GPU가 정상 작동하지 않아 gpu_node = 1로 설정된 Viewport가 검은색만 출력한다.
+
+위 문제의 원인은 NVIDIA DLSS 2.0에서 아직 MGPU를 지원하지 않기 때문이다.
+
+![](https://github.com/Devcoder-IndieWorks/NPlayerTemplate/blob/master/ScreenShots/NGXD3D12RHI_TODO_MGPU.png)
+
+그래서 Unreal Engine 4.26 엔진 코드에서 두 번째(gpu_node = 1로 설정되는) GPU를 사용하는 경우 TemporalAA Upscaler를 사용하도록 수정 해 준다.
+
+![](https://github.com/Devcoder-IndieWorks/NPlayerTemplate/blob/master/ScreenShots/AddPostProcessingPasses_MGPU_DLSS.png)
+
+
+
